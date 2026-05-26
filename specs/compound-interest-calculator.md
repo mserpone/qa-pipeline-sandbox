@@ -1,1 +1,190 @@
-IyBDb21wb3VuZCBJbnRlcmVzdCBDYWxjdWxhdG9yIC0gRnVsbCBQcm9kdWN0IFNwZWNpZmljYXRpb24KCiMjIDEuIE92ZXJ2aWV3CgpBIHdlYi1iYXNlZCBjb21wb3VuZCBpbnRlcmVzdCBjYWxjdWxhdG9yIHRoYXQgYWxsb3dzIHVzZXJzIHRvIHByb2plY3QgaW52ZXN0bWVudCBncm93dGggb3ZlciB0aW1lLiBEZXNpZ25lZCBmb3IgcGVyc29uYWwgZmluYW5jZSB1c2UgY2FzZXM6IHNhdmluZ3MgYWNjb3VudHMsIHJldGlyZW1lbnQgcGxhbm5pbmcsIGFuZCBpbnZlc3RtZW50IGNvbXBhcmlzb25zLiBTaG91bGQgYmUgaW50dWl0aXZlLCB2aXN1YWxseSBlbmdhZ2luZywgYW5kIGltbWVkaWF0ZWx5IHVzZWZ1bCB3aXRob3V0IHJlcXVpcmluZyBmaW5hbmNpYWwgZXhwZXJ0aXNlLgoKLS0tCgojIyAyLiBHb2FscyAmIFN1Y2Nlc3MgQ3JpdGVyaWEKCi0gVXNlcnMgY2FuIGNhbGN1bGF0ZSBjb21wb3VuZCBpbnRlcmVzdCBpbiB1bmRlciAzMCBzZWNvbmRzIHdpdGggbm8gaW5zdHJ1Y3Rpb25zIG5lZWRlZC4KLSBSZXN1bHRzIGFyZSBwcmVzZW50ZWQgY2xlYXJseSB3aXRoIGJvdGggYSBzdW1tYXJ5IGFuZCBhIHZpc3VhbCBicmVha2Rvd24uCi0gVGhlIGNhbGN1bGF0b3IgaGFuZGxlcyBlZGdlIGNhc2VzIGdyYWNlZnVsbHkgKHplcm8gdmFsdWVzLCB2ZXJ5IGxhcmdlIG51bWJlcnMsIGludmFsaWQgaW5wdXRzKS4KLSBUaGUgYXBwIGlzIGZ1bGx5IGZ1bmN0aW9uYWwgb24gZGVza3RvcCBhbmQgbW9iaWxlIGJyb3dzZXJzLgoKLS0tCgojIyAzLiBGdW5jdGlvbmFsIFJlcXVpcmVtZW50cwoKIyMjIDMuMSBJbnB1dHMKCnwgRmllbGQgfCBMYWJlbCB8IFR5cGUgfCBWYWxpZGF0aW9uIHwKfC0tLXwtLS18LS0tfC0tLXwKfCBQcmluY2lwYWwgfCBTdGFydGluZyBBbW91bnQgKCQpIHwgTnVtYmVyIHwgUmVxdWlyZWQsID4gMCB8CnwgQW5udWFsIEludGVyZXN0IFJhdGUgfCBJbnRlcmVzdCBSYXRlICglKSB8IE51bWJlciB8IFJlcXVpcmVkLCA+IDAsIDw9IDEwMCB8CnwgQ29tcG91bmRpbmcgRnJlcXVlbmN5IHwgQ29tcG91bmRlZCB8IERyb3Bkb3duIHwgUmVxdWlyZWQgfAp8IFRpbWUgUGVyaW9kIHwgRHVyYXRpb24gfCBOdW1iZXIgfCBSZXF1aXJlZCwgPiAwIHwKfCBUaW1lIFVuaXQgfCAtIHwgVG9nZ2xlIHwgWWVhcnMgLyBNb250aHMgfAp8IEFkZGl0aW9uYWwgQ29udHJpYnV0aW9ucyB8IE1vbnRobHkgQ29udHJpYnV0aW9uICgkKSB8IE51bWJlciB8IE9wdGlvbmFsLCA+PSAwIHwKCkNvbXBvdW5kaW5nIEZyZXF1ZW5jeSBPcHRpb25zOiBEYWlseSAoMzY1eC95ZWFyKSwgV2Vla2x5ICg1MngveWVhciksIE1vbnRobHkgKDEyeC95ZWFyKSwgUXVhcnRlcmx5ICg0eC95ZWFyKSwgU2VtaS1Bbm51YWxseSAoMngveWVhciksIEFubnVhbGx5ICgxeC95ZWFyKQoKIyMjIDMuMiBPdXRwdXRzCgotICoqRmluYWwgQmFsYW5jZSoqIC0gdG90YWwgdmFsdWUgYXQgZW5kIG9mIHBlcmlvZAotICoqVG90YWwgUHJpbmNpcGFsKiogLSBzdW0gb2YgaW5pdGlhbCBkZXBvc2l0ICsgYWxsIGNvbnRyaWJ1dGlvbnMKLSAqKlRvdGFsIEludGVyZXN0IEVhcm5lZCoqIC0gZmluYWwgYmFsYW5jZSBtaW51cyB0b3RhbCBwcmluY2lwYWwKLSAqKkdyb3d0aCBDaGFydCoqIC0geWVhci1ieS15ZWFyIG9yIG1vbnRoLWJ5LW1vbnRoIGFyZWEgY2hhcnQgc2hvd2luZyBiYWxhbmNlIG92ZXIgdGltZQotICoqQnJlYWtkb3duIFRhYmxlKiogLSBvcHRpb25hbCBleHBhbmRhYmxlIHRhYmxlIChwZXJpb2QsIGNvbnRyaWJ1dGlvbnMsIGludGVyZXN0IGVhcm5lZCwgYmFsYW5jZSkKCiMjIyAzLjMgQ2FsY3VsYXRpb25zCgpTdGFuZGFyZCBjb21wb3VuZCBpbnRlcmVzdCBmb3JtdWxhOgoKQSA9IFAoMSArIHIvbileKG50KSArIFBNVCB4IFsoKDEgKyByL24pXihudCkgLSAxKSAvIChyL24pXQoKV2hlcmU6IEEgPSBGaW5hbCBiYWxhbmNlLCBQID0gUHJpbmNpcGFsLCByID0gQW5udWFsIHJhdGUgKGRlY2ltYWwpLCBuID0gQ29tcG91bmRpbmcgZnJlcXVlbmN5IHBlciB5ZWFyLCB0ID0gVGltZSBpbiB5ZWFycywgUE1UID0gUmVndWxhciBjb250cmlidXRpb24gcGVyIHBlcmlvZC4KCiMjIyAzLjQgUmVhbC1UaW1lIFVwZGF0ZXMKCi0gUmVzdWx0cyBhbmQgY2hhcnQgdXBkYXRlIGluc3RhbnRseSBhcyB0aGUgdXNlciBhZGp1c3RzIGFueSBpbnB1dCAobm8gc3VibWl0IGJ1dHRvbiByZXF1aXJlZCkuCi0gRGVib3VuY2UgaW5wdXQgY2hhbmdlcyBieSAzMDBtcyB0byBhdm9pZCBleGNlc3NpdmUgcmVjYWxjdWxhdGlvbiBvbiByYXBpZCB0eXBpbmcuCgotLS0KCiMjIDQuIFVJL1VYIEd1aWRlbGluZXMKCiMjIyA0LjEgRGVzaWduIEFlc3RoZXRpYwoKLSBUb25lOiBDbGVhbiwgbW9kZXJuLCB0cnVzdHdvcnRoeSAtIGZpbmFuY2lhbCB0b29sIHdpdGggYXBwcm9hY2hhYmxlIHBlcnNvbmFsaXR5LgotIFRoZW1lOiBMaWdodCBiYWNrZ3JvdW5kLCBzdHJvbmcgdHlwb2dyYXBoaWMgaGllcmFyY2h5LCBzaW5nbGUgYm9sZCBhY2NlbnQgY29sb3IgKGRlZXAgdGVhbCBvciBpbmRpZ28pLgotIExheW91dDogVHdvLWNvbHVtbiBvbiBkZXNrdG9wIChpbnB1dHMgbGVmdCwgcmVzdWx0cyArIGNoYXJ0IHJpZ2h0KTsgc2luZ2xlLWNvbHVtbiBvbiBtb2JpbGUuCi0gVHlwb2dyYXBoeTogRGlzdGluY3RpdmUgZGlzcGxheSBmb250IGZvciBudW1iZXJzL3Jlc3VsdHM7IGNsZWFuIHNhbnMtc2VyaWYgZm9yIGxhYmVscyBhbmQgYm9keS4KLSBBdm9pZDogUHVycGxlIGdyYWRpZW50cywgZ2VuZXJpYyBzaGFkb3dzLCBjb29raWUtY3V0dGVyIGZpbnRlY2ggYWVzdGhldGljcy4KCiMjIyA0LjIgSW5wdXQgUGFuZWwKCi0gQ3VycmVuY3kgcHJlZml4ICgkKSBmb3IgbW9uZXRhcnkgZmllbGRzOyBwZXJjZW50IHN1ZmZpeCAoJSkgZm9yIHJhdGUgZmllbGQuCi0gT3B0aW9uYWwgc2xpZGVyIGNvbXBhbmlvbnMgZm9yIFByaW5jaXBhbCwgUmF0ZSwgYW5kIER1cmF0aW9uIGlucHV0cy4KLSBJbmxpbmUgdmFsaWRhdGlvbjogcmVkIHVuZGVybGluZSArIGhlbHBlciB0ZXh0IG9uIGludmFsaWQgaW5wdXQ7IG5vIG1vZGFsIGVycm9ycy4KCiMjIyA0LjMgUmVzdWx0cyBQYW5lbAoKLSBGaW5hbCBCYWxhbmNlIGRpc3BsYXllZCBwcm9taW5lbnRseSBpbiBsYXJnZSB0eXBvZ3JhcGh5LgotIFRvdGFsIEludGVyZXN0IEVhcm5lZCBhbmQgVG90YWwgUHJpbmNpcGFsIGFzIHNlY29uZGFyeSBzdGF0cy4KLSBDb2xvciBjb2Rpbmc6IHByaW5jaXBhbCBpbiBuZXV0cmFsLCBpbnRlcmVzdCBpbiBhY2NlbnQgY29sb3IuCi0gQ291bnQtdXAgYW5pbWF0aW9uIG9uIEZpbmFsIEJhbGFuY2Ugd2hlbiB2YWx1ZXMgdXBkYXRlLgoKIyMjIDQuNCBDaGFydAoKLSBTdGFja2VkIGFyZWEgY2hhcnQ6IG9uZSBhcmVhIGZvciBwcmluY2lwYWwsIG9uZSBmb3IgaW50ZXJlc3QsIGNvbG9yLWNvZGVkLgotIEhvdmVyYWJsZSB0b29sdGlwcyB3aXRoIGV4YWN0IHZhbHVlcyBhdCBlYWNoIGRhdGEgcG9pbnQuCi0gWC1heGlzOiB0aW1lICh5ZWFycyBvciBtb250aHMpOyBZLWF4aXM6IGRvbGxhciBhbW91bnQgZm9ybWF0dGVkIHdpdGggSy9NIHN1ZmZpeGVzLgotIFJlc3BvbnNpdmU6IHJlc2l6ZXMgZmx1aWRseSB3aXRoIHRoZSB2aWV3cG9ydC4KCiMjIyA0LjUgQnJlYWtkb3duIFRhYmxlCgotIEhpZGRlbiBieSBkZWZhdWx0OyB0b2dnbGVkIHZpYSAiU2hvdyBZZWFyLWJ5LVllYXIgQnJlYWtkb3duIi4KLSBDb2x1bW5zOiBZZWFyL1BlcmlvZCB8IFN0YXJ0aW5nIEJhbGFuY2UgfCBDb250cmlidXRpb25zIHwgSW50ZXJlc3QgRWFybmVkIHwgRW5kaW5nIEJhbGFuY2UuCi0gQWx0ZXJuYXRpbmcgcm93IHNoYWRpbmcgZm9yIHJlYWRhYmlsaXR5OyBvcHRpb25hbCBDU1YgZXhwb3J0LgoKIyMjIDQuNiBBY2Nlc3NpYmlsaXR5CgotIEFsbCBpbnB1dHMgaGF2ZSBhc3NvY2lhdGVkIGxhYmVsIGVsZW1lbnRzLgotIENoYXJ0IGluY2x1ZGVzIGFjY2Vzc2libGUgZGF0YSB0YWJsZSBhbHRlcm5hdGl2ZSBmb3Igc2NyZWVuIHJlYWRlcnMuCi0gS2V5Ym9hcmQgbmF2aWdhYmxlOyB0YWIgb3JkZXIgZm9sbG93cyB2aXN1YWwgbGF5b3V0LgotIE1pbmltdW0gNC41OjEgY29udHJhc3QgcmF0aW8gZm9yIGFsbCB0ZXh0LgotIEFSSUEgbGl2ZSByZWdpb24gb24gcmVzdWx0cyBwYW5lbCBmb3Igc2NyZWVuIHJlYWRlciBhbm5vdW5jZW1lbnRzLgoKIyMjIDQuNyBSZXNwb25zaXZlIEJlaGF2aW9yCgp8IEJyZWFrcG9pbnQgfCBMYXlvdXQgfAp8LS0tfC0tLXwKfCA+PSAxMDI0cHggfCBUd28tY29sdW1uOiBpbnB1dHMgbGVmdCwgcmVzdWx0cyArIGNoYXJ0IHJpZ2h0IHwKfCA3NjhweC0xMDIzcHggfCBUd28tY29sdW1uLCBjb21wcmVzc2VkIHwKfCA8IDc2OHB4IHwgU2luZ2xlIGNvbHVtbjogaW5wdXRzIC0+IHJlc3VsdHMgLT4gY2hhcnQgLT4gdGFibGUgfAoKLS0tCgojIyA1LiBUZWNobmljYWwgUmVxdWlyZW1lbnRzCgojIyMgNS4xIFN0YWNrCgotIEZyYW1ld29yazogUmVhY3QgKGZ1bmN0aW9uYWwgY29tcG9uZW50cyArIGhvb2tzKQotIENoYXJ0aW5nOiBSZWNoYXJ0cyAocHJlZmVycmVkKSBvciBDaGFydC5qcwotIFN0eWxpbmc6IFRhaWx3aW5kIENTUyBvciBDU1MgTW9kdWxlcwotIE5vIGJhY2tlbmQgcmVxdWlyZWQgLSBhbGwgY2FsY3VsYXRpb25zIGFyZSBjbGllbnQtc2lkZQotIE5vIGV4dGVybmFsIEFQSSBkZXBlbmRlbmNpZXMKCiMjIyA1LjIgU3RhdGUgTWFuYWdlbWVudAoKLSBMb2NhbCBjb21wb25lbnQgc3RhdGUgKHVzZVN0YXRlKSBpcyBzdWZmaWNpZW50LgotIEFsbCBjYWxjdWxhdG9yIGlucHV0cyBzdG9yZWQgaW4gYSBzaW5nbGUgc3RhdGUgb2JqZWN0IGZvciBlYXN5IHNlcmlhbGl6YXRpb24uCgojIyMgNS4zIFVSTCBTdGF0ZSAoU3RyZXRjaCBHb2FsKQoKLSBFbmNvZGUgY2FsY3VsYXRvciBpbnB1dHMgaW50byBVUkwgcXVlcnkgcGFyYW1ldGVycyBmb3Igc2hhcmVhYmxlIGxpbmtzLgotIEV4YW1wbGU6ID9wPTEwMDAwJnI9NyZuPTEyJnQ9MjAmcG10PTIwMAoKIyMjIDUuNCBQZXJmb3JtYW5jZQoKLSBJbml0aWFsIGxvYWQgdW5kZXIgMiBzZWNvbmRzIG9uIGEgc3RhbmRhcmQgYnJvYWRiYW5kIGNvbm5lY3Rpb24uCi0gQ2hhcnQgcmVuZGVycyB3aXRoaW4gMTAwbXMgb2YgaW5wdXQgY2hhbmdlLgotIFVzZSB1c2VNZW1vIGZvciBjYWxjdWxhdGlvbiBsb2dpYyB0byBhdm9pZCB1bm5lY2Vzc2FyeSByZS1yZW5kZXJzLgoKIyMjIDUuNSBCcm93c2VyIFN1cHBvcnQKCi0gQ2hyb21lLCBGaXJlZm94LCBTYWZhcmksIEVkZ2UgKGxhdGVzdCAyIHZlcnNpb25zIGVhY2gpCi0gaU9TIFNhZmFyaSAxNSssIEFuZHJvaWQgQ2hyb21lIDExMCsKCi0tLQoKIyMgNi4gUUEgQ29uc2lkZXJhdGlvbnMKCiMjIyA2LjEgVGVzdCBDYXNlcwoKfCBTY2VuYXJpbyB8IElucHV0IHwgRXhwZWN0ZWQgT3V0cHV0IHwKfC0tLXwtLS18LS0tfAp8IEJhc2ljIGNhbGN1bGF0aW9uIHwgUD0xMDAwLCByPTUlLCBuPWFubnVhbGx5LCB0PTEweXIgfCB+JDEsNjI4Ljg5IHwKfCBXaXRoIGNvbnRyaWJ1dGlvbnMgfCBQPTEwMDAsIHI9NyUsIG49bW9udGhseSwgdD0zMHlyLCBQTVQ9JDEwMCB8IH4kMTIxLDk5NyB8CnwgWmVybyBjb250cmlidXRpb24gfCBQTVQ9MCB8IFNhbWUgYXMgYmFzaWMgZm9ybXVsYSB8CnwgSGlnaCBmcmVxdWVuY3kgY29tcG91bmRpbmcgfCBuPWRhaWx5IHZzIG49YW5udWFsbHkgfCBEYWlseSB5aWVsZHMgc2xpZ2h0bHkgbW9yZSB8CnwgRWRnZTogdmVyeSBzaG9ydCBkdXJhdGlvbiB8IHQ9MSBtb250aCB8IENvcnJlY3QgZnJhY3Rpb25hbCB5ZWFyIGNhbGN1bGF0aW9uIHwKfCBFZGdlOiBsYXJnZSBudW1iZXJzIHwgUD0kMSwwMDAsMDAwIHwgTm8gb3ZlcmZsb3csIGZvcm1hdHMgYXMgJDFNKyB8CnwgSW52YWxpZCBpbnB1dCB8IFJhdGUgPSAtNSUgfCBJbmxpbmUgZXJyb3IsIG5vIGNhbGN1bGF0aW9uIHwKfCBJbnZhbGlkIGlucHV0IHwgUHJpbmNpcGFsID0gMCB8IElubGluZSBlcnJvciBvciB6ZXJvIHJlc3VsdCB8CgojIyMgNi4yIENyb3NzLUJyb3dzZXIgVGVzdGluZwoKLSBWYWxpZGF0ZSBjaGFydCByZW5kZXJpbmcgYWNyb3NzIGFsbCBzdXBwb3J0ZWQgYnJvd3NlcnMuCi0gVmVyaWZ5IHNsaWRlciBiZWhhdmlvciBvbiB0b3VjaCBkZXZpY2VzLgotIENvbmZpcm0gQ1NWIGV4cG9ydCAoaWYgaW1wbGVtZW50ZWQpIHdvcmtzIGluIGFsbCBicm93c2Vycy4KCi0tLQoKIyMgNy4gT3V0IG9mIFNjb3BlICh2MSkKCi0gVXNlciBhY2NvdW50cyBvciBzYXZlZCBjYWxjdWxhdGlvbnMKLSBUYXggY2FsY3VsYXRpb25zCi0gSW5mbGF0aW9uIGFkanVzdG1lbnQKLSBNdWx0aXBsZSBzY2VuYXJpb3MgLyBjb21wYXJpc29uIG1vZGUgKGNvbnNpZGVyIGZvciB2MikKLSBCYWNrZW5kIEFQSQoKLS0tCgojIyA4LiBPcGVuIFF1ZXN0aW9ucwoKLSBTaG91bGQgY29udHJpYnV0aW9ucyBiZSBtYWRlIGF0IHRoZSBiZWdpbm5pbmcgb3IgZW5kIG9mIGVhY2ggcGVyaW9kPyAoRGVmYXVsdDogZW5kIG9mIHBlcmlvZCkKLSBTaG91bGQgd2Ugc3VwcG9ydCB3aXRoZHJhd2FsIHNjZW5hcmlvcyAobmVnYXRpdmUgY29udHJpYnV0aW9ucyk/Ci0gSXMgQ1NWIGV4cG9ydCBpbiBzY29wZSBmb3IgdjE/CgotLS0KCiMjIDkuIERlbGl2ZXJhYmxlcwoKLSBbIF0gUmVhY3QgY29tcG9uZW50OiBDb21wb3VuZEludGVyZXN0Q2FsY3VsYXRvcgotIFsgXSBVbml0IHRlc3RzIGZvciBjYWxjdWxhdGlvbiBsb2dpYwotIFsgXSBJbnRlZ3JhdGlvbi9FMkUgdGVzdHMgY292ZXJpbmcga2V5IHVzZXIgZmxvd3MKLSBbIF0gUmVzcG9uc2l2ZSBsYXlvdXQgdmVyaWZpZWQgb24gbW9iaWxlIGFuZCBkZXNrdG9wCi0gWyBdIEFjY2Vzc2liaWxpdHkgYXVkaXQgcGFzc2VkCg==
+# Compound Interest Calculator - Full Product Specification
+
+## 1. Overview
+
+A web-based compound interest calculator that allows users to project investment growth over time. Designed for personal finance use cases: savings accounts, retirement planning, and investment comparisons. Should be intuitive, visually engaging, and immediately useful without requiring financial expertise.
+
+---
+
+## 2. Goals & Success Criteria
+
+- Users can calculate compound interest in under 30 seconds with no instructions needed.
+- Results are presented clearly with both a summary and a visual breakdown.
+- The calculator handles edge cases gracefully (zero values, very large numbers, invalid inputs).
+- The app is fully functional on desktop and mobile browsers.
+
+---
+
+## 3. Functional Requirements
+
+### 3.1 Inputs
+
+| Field | Label | Type | Validation |
+|---|---|---|---|
+| Principal | Starting Amount ($) | Number | Required, > 0 |
+| Annual Interest Rate | Interest Rate (%) | Number | Required, > 0, <= 100 |
+| Compounding Frequency | Compounded | Dropdown | Required |
+| Time Period | Duration | Number | Required, > 0 |
+| Time Unit | - | Toggle | Years / Months |
+| Additional Contributions | Monthly Contribution ($) | Number | Optional, >= 0 |
+
+Compounding Frequency Options: Daily (365x/year), Weekly (52x/year), Monthly (12x/year), Quarterly (4x/year), Semi-Annually (2x/year), Annually (1x/year)
+
+### 3.2 Outputs
+
+- **Final Balance** - total value at end of period
+- **Total Principal** - sum of initial deposit + all contributions
+- **Total Interest Earned** - final balance minus total principal
+- **Growth Chart** - year-by-year or month-by-month area chart showing balance over time
+- **Breakdown Table** - optional expandable table (period, contributions, interest earned, balance)
+
+### 3.3 Calculations
+
+Standard compound interest formula:
+
+A = P(1 + r/n)^(nt) + PMT x [((1 + r/n)^(nt) - 1) / (r/n)]
+
+Where: A = Final balance, P = Principal, r = Annual rate (decimal), n = Compounding frequency per year, t = Time in years, PMT = Regular contribution per period.
+
+### 3.4 Real-Time Updates
+
+- Results and chart update instantly as the user adjusts any input (no submit button required).
+- Debounce input changes by 300ms to avoid excessive recalculation on rapid typing.
+
+---
+
+## 4. UI/UX Guidelines
+
+### 4.1 Design Aesthetic
+
+- Tone: Clean, modern, trustworthy - financial tool with approachable personality.
+- Theme: Light background, strong typographic hierarchy, single bold accent color (deep teal or indigo).
+- Layout: Two-column on desktop (inputs left, results + chart right); single-column on mobile.
+- Typography: Distinctive display font for numbers/results; clean sans-serif for labels and body.
+- Avoid: Purple gradients, generic shadows, cookie-cutter fintech aesthetics.
+
+### 4.2 Input Panel
+
+- Currency prefix ($) for monetary fields; percent suffix (%) for rate field.
+- Optional slider companions for Principal, Rate, and Duration inputs.
+- Inline validation: red underline + helper text on invalid input; no modal errors.
+
+### 4.3 Results Panel
+
+- Final Balance displayed prominently in large typography.
+- Total Interest Earned and Total Principal as secondary stats.
+- Color coding: principal in neutral, interest in accent color.
+- Count-up animation on Final Balance when values update.
+
+### 4.4 Chart
+
+- Stacked area chart: one area for principal, one for interest, color-coded.
+- Hoverable tooltips with exact values at each data point.
+- X-axis: time (years or months); Y-axis: dollar amount formatted with K/M suffixes.
+- Responsive: resizes fluidly with the viewport.
+
+### 4.5 Breakdown Table
+
+- Hidden by default; toggled via "Show Year-by-Year Breakdown".
+- Columns: Year/Period | Starting Balance | Contributions | Interest Earned | Ending Balance.
+- Alternating row shading for readability; optional CSV export.
+
+### 4.6 Accessibility
+
+- All inputs have associated label elements.
+- Chart includes accessible data table alternative for screen readers.
+- Keyboard navigable; tab order follows visual layout.
+- Minimum 4.5:1 contrast ratio for all text.
+- ARIA live region on results panel for screen reader announcements.
+
+### 4.7 Responsive Behavior
+
+| Breakpoint | Layout |
+|---|---|
+| >= 1024px | Two-column: inputs left, results + chart right |
+| 768px-1023px | Two-column, compressed |
+| < 768px | Single column: inputs -> results -> chart -> table |
+
+---
+
+## 5. Technical Requirements
+
+### 5.1 Stack
+
+- Framework: React (functional components + hooks)
+- Charting: Recharts (preferred) or Chart.js
+- Styling: Tailwind CSS or CSS Modules
+- No backend required - all calculations are client-side
+- No external API dependencies
+
+### 5.2 State Management
+
+- Local component state (useState) is sufficient.
+- All calculator inputs stored in a single state object for easy serialization.
+
+### 5.3 URL State (Stretch Goal)
+
+- Encode calculator inputs into URL query parameters for shareable links.
+- Example: ?p=10000&r=7&n=12&t=20&pmt=200
+
+### 5.4 Performance
+
+- Initial load under 2 seconds on a standard broadband connection.
+- Chart renders within 100ms of input change.
+- Use useMemo for calculation logic to avoid unnecessary re-renders.
+
+### 5.5 Browser Support
+
+- Chrome, Firefox, Safari, Edge (latest 2 versions each)
+- iOS Safari 15+, Android Chrome 110+
+
+---
+
+## 6. QA Considerations
+
+### 6.1 Test Cases
+
+| Scenario | Input | Expected Output |
+|---|---|---|
+| Basic calculation | P=1000, r=5%, n=annually, t=10yr | ~$1,628.89 |
+| With contributions | P=1000, r=7%, n=monthly, t=30yr, PMT=$100 | ~$121,997 |
+| Zero contribution | PMT=0 | Same as basic formula |
+| High frequency compounding | n=daily vs n=annually | Daily yields slightly more |
+| Edge: very short duration | t=1 month | Correct fractional year calculation |
+| Edge: large numbers | P=$1,000,000 | No overflow, formats as $1M+ |
+| Invalid input | Rate = -5% | Inline error, no calculation |
+| Invalid input | Principal = 0 | Inline error or zero result |
+
+### 6.2 Cross-Browser Testing
+
+- Validate chart rendering across all supported browsers.
+- Verify slider behavior on touch devices.
+- Confirm CSV export (if implemented) works in all browsers.
+
+---
+
+## 7. Out of Scope (v1)
+
+- User accounts or saved calculations
+- Tax calculations
+- Inflation adjustment
+- Multiple scenarios / comparison mode (consider for v2)
+- Backend API
+
+---
+
+## 8. Open Questions
+
+- Should contributions be made at the beginning or end of each period? (Default: end of period)
+- Should we support withdrawal scenarios (negative contributions)?
+- Is CSV export in scope for v1?
+
+---
+
+## 9. Deliverables
+
+- [ ] React component: CompoundInterestCalculator
+- [ ] Unit tests for calculation logic
+- [ ] Integration/E2E tests covering key user flows
+- [ ] Responsive layout verified on mobile and desktop
+- [ ] Accessibility audit passed
