@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f4f1eb; --surface: #fffef9; --border: #e0dbd0;
+      --text: #1a1814; --text-muted: #7a7468;
+      --accent: #1a6b4a; --accent-light: #e8f5ef;
+      --accent-2: #c8873a; --accent-2-light: #fdf3e7;
+      --error: #c0392b; --radius: 12px; --transition: 0.2s ease;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
+    header { text-align: center; margin-bottom: 2.5rem; }
+    header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -0.02em; line-height: 1.1; }
+    header h1 em { font-style: italic; color: var(--accent); }
+    header p { margin-top: 0.5rem; color: var(--text-muted); font-size: 0.95rem; font-weight: 300; }
+    .jira-ref { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.75rem; padding: 0.3rem 0.75rem; background: var(--accent-light); border: 1px solid #b8dece; border-radius: 20px; font-size: 0.8rem; color: var(--accent); font-family: 'DM Mono', monospace; text-decoration: none; }
+    .app { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 380px 1fr; gap: 1.5rem; align-items: start; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
+    .input-group { margin-bottom: 1.25rem; }
+    label { display: block; font-size: 0.8rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .input-wrap { position: relative; display: flex; align-items: center; }
+    .input-prefix, .input-suffix { position: absolute; font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--text-muted); pointer-events: none; }
+    .input-prefix { left: 0.75rem; } .input-suffix { right: 0.75rem; }
+    input[type="number"], select { width: 100%; padding: 0.65rem 0.85rem; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 0.95rem; color: var(--text); background: var(--bg); outline: none; transition: border-color var(--transition); -moz-appearance: textfield; }
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    input[type="number"]:focus, select:focus { border-color: var(--accent); background: var(--surface); }
+    input.has-prefix { padding-left: 1.75rem; } input.has-suffix { padding-right: 2rem; }
+    input.error { border-color: var(--error); }
+    .error-msg { font-size: 0.75rem; color: var(--error); margin-top: 0.25rem; display: none; }
+    .error-msg.show { display: block; }
+    select { appearance: none; cursor: pointer; padding-right: 2rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7468' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; }
+    .toggle-group { display: flex; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--bg); }
+    .toggle-group button { flex: 1; padding: 0.65rem; border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text-muted); cursor: pointer; transition: all var(--transition); }
+    .toggle-group button.active { background: var(--accent); color: white; font-weight: 500; }
+    .divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+    .balance-display { text-align: center; padding: 1.5rem 1rem; background: var(--accent); border-radius: 10px; margin-bottom: 1.25rem; position: relative; overflow: hidden; }
+    .balance-display::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+    .balance-label { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); margin-bottom: 0.35rem; }
+    .balance-amount { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: white; letter-spacing: -0.02em; line-height: 1; }
+    .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .stat-card { padding: 1rem; border-radius: 10px; border: 1.5px solid var(--border); background: var(--surface); }
+    .stat-card.interest { background: var(--accent-2-light); border-color: #e8c89a; }
+    .stat-label { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .stat-card.interest .stat-label { color: var(--accent-2); }
+    .stat-value { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text); letter-spacing: -0.01em; }
+    .stat-card.interest .stat-value { color: var(--accent-2); }
+    .chart-container { margin-bottom: 1.25rem; padding: 1.25rem; border: 1.5px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+    .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .chart-title { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+    .chart-legend { display: flex; gap: 1rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; color: var(--text-muted); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+    canvas { width: 100%; border-radius: 8px; display: block; }
+    .chart-tooltip { position: fixed; background: var(--text); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.78rem; font-family: 'DM Mono', monospace; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; white-space: nowrap; }
+    .breakdown-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; background: var(--bg); border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all var(--transition); }
+    .breakdown-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .breakdown-toggle .chevron { transition: transform var(--transition); font-size: 0.7rem; }
+    .breakdown-toggle.open .chevron { transform: rotate(180deg); }
+    .breakdown-table-wrap { display: none; margin-top: 0.75rem; overflow-x: auto; border: 1.5px solid var(--border); border-radius: 8px; }
+    .breakdown-table-wrap.show { display: block; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    thead th { padding: 0.6rem 0.85rem; text-align: right; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); background: var(--bg); border-bottom: 1px solid var(--border); }
+    thead th:first-child { text-align: left; }
+    tbody tr:nth-child(even) { background: var(--bg); }
+    tbody tr:hover { background: var(--accent-light); }
+    tbody td { padding: 0.55rem 0.85rem; text-align: right; font-family: 'DM Mono', monospace; color: var(--text); }
+    tbody td:first-child { text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--text-muted); }
+    tbody td.interest-col { color: var(--accent-2); }
+    @media (max-width: 800px) { .app { grid-template-columns: 1fr; } }
+    @media (max-width: 500px) { .stats-row { grid-template-columns: 1fr; } body { padding: 1rem 0.75rem; } }
+    .fade-update { animation: fadeUpdate 0.3s ease; }
+    @keyframes fadeUpdate { 0% { opacity: 0.4; transform: translateY(-2px); } 100% { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Compound <em>Interest</em> Calculator</h1>
+  <p>Project your investment growth over time</p>
+  <a class="jira-ref" href="https://tricentisqtestus.atlassian.net/browse/MJ-41" target="_blank">MJ-41</a>
+</header>
+<div class="app">
+  <div class="card">
+    <div class="input-group">
+      <label for="principal">Starting Amount</label>
+      <div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="principal" class="has-prefix" value="10000" min="0.01" step="100"></div>
+      <div class="error-msg" id="principal-err">Please enter an amount greater than 0</div>
+    </div>
+    <div class="input-group">
+      <label for="rate">Interest Rate</label>
+      <div class="input-wrap"><input type="number" id="rate" class="has-suffix" value="7" min="0.01" max="100" step="0.1"><span class="input-suffix">%</span></div>
+      <div class="error-msg" id="rate-err">Please enter a rate between 0 and 100</div>
+    </div>
+    <div class="input-group">
+      <label for="frequency">Compounding Frequency</label>
+      <select id="frequency">
+        <option value="365">Daily</option><option value="52">Weekly</option>
+        <option value="12" selected>Monthly</option><option value="4">Quarterly</option>
+        <option value="2">Semi-Annually</option><option value="1">Annually</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>Duration</label>
+      <div style="display:flex;gap:0.5rem;align-items:flex-start;">
+        <div style="flex:1">
+          <div class="input-wrap"><input type="number" id="duration" value="20" min="1" step="1"></div>
+          <div class="error-msg" id="duration-err">Please enter a duration greater than 0</div>
+        </div>
+        <div class="toggle-group" style="width:130px;flex-shrink:0;">
+          <button id="btn-years" class="active" onclick="setUnit('years')">Years</button>
+          <button id="btn-months" onclick="setUnit('months')">Months</button>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="input-group">
+      <label for="contribution">Monthly Contribution <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+      <div class="input-wrap"><span class="input-prefix">$</span><input type="number" id="contribution" class="has-prefix" value="200" min="0" step="50"></div>
+    </div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div class="balance-display">
+        <div class="balance-label">Final Balance</div>
+        <div class="balance-amount" id="final-balance">$0.00</div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-label">Total Principal</div><div class="stat-value" id="total-principal">$0.00</div></div>
+        <div class="stat-card interest"><div class="stat-label">Interest Earned</div><div class="stat-value" id="total-interest">$0.00</div></div>
+      </div>
+      <div class="chart-container">
+        <div class="chart-header">
+          <span class="chart-title">Growth Over Time</span>
+          <div class="chart-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#1a6b4a"></div>Principal</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#c8873a"></div>Interest</div>
+          </div>
+        </div>
+        <canvas id="chart" height="200"></canvas>
+      </div>
+      <button class="breakdown-toggle" id="breakdown-btn" onclick="toggleBreakdown()">
+        <span>Year-by-Year Breakdown</span><span class="chevron">▼</span>
+      </button>
+      <div class="breakdown-table-wrap" id="breakdown-wrap">
+        <table>
+          <thead><tr><th>Year</th><th>Starting Balance</th><th>Contributions</th><th>Interest Earned</th><th>Ending Balance</th></tr></thead>
+          <tbody id="breakdown-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="chart-tooltip" id="tooltip"></div>
+<script>
+  let unit='years',debounceTimer=null,chartData=[];
+  function setUnit(u){unit=u;document.getElementById('btn-years').classList.toggle('active',u==='years');document.getElementById('btn-months').classList.toggle('active',u==='months');scheduleCalc();}
+  function fmt(n){if(n>=1e6)return'$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(1)+'K';return'$'+n.toFixed(2);}
+  function fmtFull(n){return'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function validate(){
+    let valid=true;
+    const P=parseFloat(document.getElementById('principal').value);
+    const r=parseFloat(document.getElementById('rate').value);
+    const t=parseFloat(document.getElementById('duration').value);
+    const se=(id,eid,c)=>{document.getElementById(id).classList.toggle('error',c);document.getElementById(eid).classList.toggle('show',c);if(c)valid=false;};
+    se('principal','principal-err',isNaN(P)||P<=0);
+    se('rate','rate-err',isNaN(r)||r<=0||r>100);
+    se('duration','duration-err',isNaN(t)||t<=0);
+    return valid;
+  }
+  function calculate(){
+    if(!validate())return;
+    const P=parseFloat(document.getElementById('principal').value);
+    const r=parseFloat(document.getElementById('rate').value)/100;
+    const n=parseInt(document.getElementById('frequency').value);
+    const rawT=parseFloat(document.getElementById('duration').value);
+    const t=unit==='months'?rawT/12:rawT;
+    const pmt=parseFloat(document.getElementById('contribution').value)||0;
+    const pmtN=pmt*12/n;
+    const rpp=r/n;
+    const years=Math.ceil(t);
+    chartData=[];
+    const tableRows=[];
+    for(let y=0;y<=years;y++){
+      const tY=Math.min(y,t),nt=tY*n;
+      const gf=Math.pow(1+rpp,nt);
+      const principal=P+pmtN*nt;
+      const balance=rpp>0?P*gf+pmtN*((gf-1)/rpp):P+pmtN*nt;
+      chartData.push({year:y,balance,principal:Math.min(principal,balance)});
+    }
+    for(let y=1;y<=years;y++){
+      const prev=chartData[y-1],curr=chartData[y];
+      const contribs=pmtN*Math.min(n,(t-(y-1))*n);
+      tableRows.push({year:y,start:prev.balance,contributions:contribs,interest:curr.balance-prev.balance-contribs,end:curr.balance});
+    }
+    const finalBalance=chartData[chartData.length-1].balance;
+    const totalPrincipal=Math.min(P+pmt*12*t,finalBalance);
+    const totalInterest=finalBalance-totalPrincipal;
+    animateValue('final-balance',finalBalance);
+    updateStat('total-principal',totalPrincipal);
+    updateStat('total-interest',totalInterest);
+    drawChart();buildTable(tableRows);
+  }
+  function animateValue(id,v){const el=document.getElementById(id);el.classList.remove('fade-update');void el.offsetWidth;el.classList.add('fade-update');el.textContent=fmtFull(v);}
+  function updateStat(id,v){const el=document.getElementById(id);el.classList.remove('fade-update');void el.offsetWidth;el.classList.add('fade-update');el.textContent=fmtFull(v);}
+  function drawChart(){
+    const canvas=document.getElementById('chart');
+    const dpr=window.devicePixelRatio||1;
+    const W=canvas.parentElement.clientWidth-40,H=200;
+    canvas.width=W*dpr;canvas.height=H*dpr;
+    canvas.style.width=W+'px';canvas.style.height=H+'px';
+    const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+    const pad={top:12,right:12,bottom:28,left:52};
+    const cW=W-pad.left-pad.right,cH=H-pad.top-pad.bottom;
+    const maxVal=Math.max(...chartData.map(d=>d.balance))*1.05;
+    const pts=chartData.length;
+    const xP=i=>pad.left+(i/(pts-1))*cW;
+    const yP=v=>pad.top+cH-(v/maxVal)*cH;
+    ctx.strokeStyle='#e8e3d8';ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){
+      const y=pad.top+(i/4)*cH;
+      ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(pad.left+cW,y);ctx.stroke();
+      ctx.fillStyle='#9a9488';ctx.font='10px DM Mono,monospace';ctx.textAlign='right';
+      ctx.fillText(fmt(maxVal*(1-i/4)),pad.left-6,y+4);
+    }
+    const drawArea=(fn,c1,c2)=>{
+      ctx.beginPath();ctx.moveTo(xP(0),yP(0));
+      chartData.forEach((d,i)=>ctx.lineTo(xP(i),yP(fn(d))));
+      ctx.lineTo(xP(pts-1),yP(0));ctx.closePath();
+      const g=ctx.createLinearGradient(0,pad.top,0,pad.top+cH);
+      g.addColorStop(0,c1);g.addColorStop(1,c2);ctx.fillStyle=g;ctx.fill();
+    };
+    drawArea(d=>d.balance,'rgba(200,135,58,0.5)','rgba(200,135,58,0.05)');
+    drawArea(d=>d.principal,'rgba(26,107,74,0.6)','rgba(26,107,74,0.1)');
+    const drawLine=(fn,color)=>{
+      ctx.beginPath();
+      chartData.forEach((d,i)=>i===0?ctx.moveTo(xP(i),yP(fn(d))):ctx.lineTo(xP(i),yP(fn(d))));
+      ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();
+    };
+    drawLine(d=>d.balance,'#c8873a');drawLine(d=>d.principal,'#1a6b4a');
+    ctx.fillStyle='#9a9488';ctx.font='10px DM Mono,monospace';ctx.textAlign='center';
+    const step=Math.max(1,Math.floor(pts/6));
+    for(let i=0;i<pts;i+=step)ctx.fillText('Yr '+chartData[i].year,xP(i),H-6);
+    canvas._meta={pad,cW,xP,yP};
+  }
+  const canvas=document.getElementById('chart'),tooltip=document.getElementById('tooltip');
+  canvas.addEventListener('mousemove',e=>{
+    const m=canvas._meta;if(!m||!chartData.length)return;
+    const rect=canvas.getBoundingClientRect();
+    const idx=Math.round(((e.clientX-rect.left-m.pad.left)/m.cW)*(chartData.length-1));
+    if(idx<0||idx>=chartData.length){tooltip.style.opacity=0;return;}
+    const d=chartData[idx];
+    tooltip.innerHTML=`<strong>Year ${d.year}</strong><br>Balance: ${fmtFull(d.balance)}<br>Principal: ${fmtFull(d.principal)}<br>Interest: ${fmtFull(d.balance-d.principal)}`;
+    tooltip.style.opacity=1;tooltip.style.left=(e.clientX+12)+'px';tooltip.style.top=(e.clientY-10)+'px';
+  });
+  canvas.addEventListener('mouseleave',()=>{tooltip.style.opacity=0;});
+  function buildTable(rows){
+    document.getElementById('breakdown-body').innerHTML=rows.map(r=>`<tr><td>Year ${r.year}</td><td>${fmtFull(r.start)}</td><td>${fmtFull(r.contributions)}</td><td class="interest-col">${fmtFull(Math.max(0,r.interest))}</td><td>${fmtFull(r.end)}</td></tr>`).join('');
+  }
+  function toggleBreakdown(){document.getElementById('breakdown-btn').classList.toggle('open');document.getElementById('breakdown-wrap').classList.toggle('show');}
+  function scheduleCalc(){clearTimeout(debounceTimer);debounceTimer=setTimeout(calculate,300);}
+  ['principal','rate','frequency','duration','contribution'].forEach(id=>document.getElementById(id).addEventListener('input',scheduleCalc));
+  window.addEventListener('resize',()=>{if(chartData.length)drawChart();});
+  calculate();
+</script>
+</body>
+</html>
