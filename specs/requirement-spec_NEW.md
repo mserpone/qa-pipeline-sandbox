@@ -15,7 +15,7 @@
 ### Requirement ID: 40309985
 
 **PID**: RQ-68  
-**Title**: MJ-41 Compound Interest Calculator - Real-Time Calculation with Visual Results  _
+**Title**: MJ-41 Compound Interest Calculator - Real-Time Calculation with Visual Results
 **Status**: New  
 **Priority**: Must have  
 **Type**: Functional  
